@@ -80,7 +80,7 @@ async def stripe_charitywater_check(cc, mm, yy, cvv):
                 if "succeeded" in result or "Thank you" in result:
                     return f"✅ Approved\nStatus: {status}"
                 else:
-                    return f"❌ Declined or Error\nStatus: {status}\nRaw Output:\n{result[:4096]}"
+                    return f"❌ Declined\nStatus: {status}\nRaw Output:\n{result[:4096]}"
     except Exception as e:
         return f"❌ Charitywater Error: {e}"
 
