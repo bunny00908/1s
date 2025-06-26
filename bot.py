@@ -4,7 +4,7 @@ from pyrogram import Client, filters
 
 API_ID = 29569239
 API_HASH = "b2407514e15f24c8ec2c735e8018acd7"
-BOT_TOKEN = "7582997295:AAEcqeqfj6w6C_lSdnUqpkox3vjUcIo2w70"
+BOT_TOKEN = "8039426526:AAFSqWU-fRl_gwTPqYLK8yxuS0N9at1hC4s"
 
 # YOUR PROXY DETAILS (use any of the three you posted)
 PROXY_HOST = "evo-pro.porterproxies.com"
